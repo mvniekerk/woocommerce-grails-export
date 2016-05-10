@@ -43,6 +43,10 @@ class Product {
         attributes.variationDescription ?: ""
     }
 
+    String getUrl() {
+        "http://blog.rozzerstarantulas.co.za/?page_id=$id"
+    }
+
     //TODO hard code base URL
     Map toMap() {
         [
@@ -55,7 +59,7 @@ class Product {
                 stock: stock,
                 categories: categories,
                 variations: variations*.toMap(),
-                url: "http://blog.rozzerstarantulas.co.za/?page_id=$id"
+                url: url
         ]
 
     }
