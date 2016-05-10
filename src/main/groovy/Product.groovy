@@ -28,7 +28,7 @@ class Product {
     }
 
     BigDecimal getMaxPrice() {
-        attributes.productAttributes.minVariationPrice ? new BigDecimal(attributes.productAttributes.minVariationPrice) : price
+        attributes.productAttributes.maxVariationPrice ? new BigDecimal(attributes.productAttributes.maxVariationPrice) : price
     }
 
     boolean isInStock() {
