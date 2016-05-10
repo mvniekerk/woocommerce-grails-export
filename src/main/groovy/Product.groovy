@@ -164,10 +164,10 @@ class Product {
                         attributes.defaultAttributes = parseString(initialParse(attributes.defaultAttributes)).val
                     }
 
-                    println "$id: $postTitle $categories $attributes"
+//                    println "$id: $postTitle ${ret.categories} $attributes"
                     //Get variation
                     sql.eachRow "select * from wp_posts where post_parent=$id and post_type='product_variation'", { var ->
-                        log.warn "\tVariation : " + var.post_title
+//                        log.warn "\tVariation : " + var.post_title
 
                         ret.variations << Variation.getVariationForId(var.ID, dataSource)
 
