@@ -62,6 +62,8 @@ dependencies {
     console "org.grails:grails-console"
     profile "org.grails.profiles:rest-api:3.1.6"
     runtime "com.h2database:h2"
+    compile "mysql:mysql-connector-java:5.1.6"
+    compile "org.apache.poi:poi:3.15-beta1"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testCompile "org.grails:grails-datastore-rest-client"
