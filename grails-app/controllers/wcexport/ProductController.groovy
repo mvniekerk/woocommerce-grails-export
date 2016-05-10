@@ -33,14 +33,14 @@ class ProductController {
                 }
                 l.eachWithIndex { Product p, int i ->
                     def r = s.createRow(i+1)
-                    hr.createCell 0, Cell.CELL_TYPE_NUMERIC setCellValue p.id
-                    hr.createCell 2, Cell.CELL_TYPE_NUMERIC setCellValue p.price
-                    hr.createCell 3, Cell.CELL_TYPE_BOOLEAN setCellValue p.inStock
-                    hr.createCell 4, Cell.CELL_TYPE_NUMERIC setCellValue p.stock
-                    hr.createCell 5, Cell.CELL_TYPE_NUMERIC setCellValue p.minPrice
-                    hr.createCell 6, Cell.CELL_TYPE_NUMERIC setCellValue p.maxPrice
-                    hr.createCell 7, Cell.CELL_TYPE_STRING setCellValue p.url
-                    hr.createCell 8, Cell.CELL_TYPE_STRING setCellValue p.categories.join(',')
+                    r.createCell 0, Cell.CELL_TYPE_NUMERIC setCellValue p.id
+                    r.createCell 2, Cell.CELL_TYPE_NUMERIC setCellValue p.price
+                    r.createCell 3, Cell.CELL_TYPE_BOOLEAN setCellValue p.inStock
+                    r.createCell 4, Cell.CELL_TYPE_NUMERIC setCellValue p.stock
+                    r.createCell 5, Cell.CELL_TYPE_NUMERIC setCellValue p.minPrice
+                    r.createCell 6, Cell.CELL_TYPE_NUMERIC setCellValue p.maxPrice
+                    r.createCell 7, Cell.CELL_TYPE_STRING setCellValue p.url
+                    r.createCell 8, Cell.CELL_TYPE_STRING setCellValue p.categories.join(',')
                 }
                 wb.write response.outputStream
             }
