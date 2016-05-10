@@ -11,7 +11,7 @@ class ProductController {
     def list() {
         def l = []
         try {
-            l = productService.productList
+            l = productService.productList*.toMap()
         } catch (Exception e) {
             e.printStackTrace()
             log.error e.message
