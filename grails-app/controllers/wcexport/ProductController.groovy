@@ -5,7 +5,10 @@ import grails.rest.*
 import grails.converters.*
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.ss.usermodel.Cell
+import org.apache.poi.ss.usermodel.CellStyle
+import org.apache.poi.ss.usermodel.Font
 import org.apache.poi.ss.usermodel.Hyperlink
+import org.apache.poi.ss.usermodel.IndexedColors
 
 class ProductController {
 
@@ -26,6 +29,13 @@ class ProductController {
                 def wb = new HSSFWorkbook()
                 def creationHelper = wb.creationHelper
                 def s = wb.createSheet 'Products'
+
+                def linkStyle = wb.createCellStyle()
+                def linkFont = wb.createFont()
+                linkFont.underline = Font.U_SINGLE
+                linkFont.color = IndexedColors.BLUE.index
+                linkStyle.font = linkFont
+
                 //Header row
                 def hr = s.createRow 0
                 ['ID', 'Name', 'Variation', 'Price', 'In Stock', 'Stock', 'MinPrice', 'MaxPrice', 'Link', 'Categories']
@@ -48,10 +58,12 @@ class ProductController {
                     def link = creationHelper.createHyperlink(Hyperlink.LINK_URL)
                     link.address = p.url
                     r.getCell(8).hyperlink = link
+                    r.getCell(8).cellStyle = linkStyle
+
                     r.createCell 9, Cell.CELL_TYPE_STRING setCellValue p.categories.join(',')
 
                     p.variations.eachWithIndex{ Variation v, int vi ->
-                        def rr = s.createRow(i+extra+vi)
+                        def rr = s.createRow(i+extra+vi+1)
                         rr.createCell 0, Cell.CELL_TYPE_NUMERIC setCellValue v.id
                         rr.createCell 2, Cell.CELL_TYPE_STRING setCellValue v.name
                         rr.createCell 3, Cell.CELL_TYPE_NUMERIC setCellValue v.price
