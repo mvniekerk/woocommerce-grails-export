@@ -43,6 +43,7 @@ class Product {
         attributes.variationDescription ?: ""
     }
 
+    //TODO hard code base URL
     Map toMap() {
         [
                 id: id,
@@ -53,7 +54,8 @@ class Product {
                 inStock: inStock,
                 stock: stock,
                 categories: categories,
-                variations: variations*.toMap()
+                variations: variations*.toMap(),
+                url: "http://blog.rozzerstarantulas.co.za/?page_id=$id"
         ]
 
     }
