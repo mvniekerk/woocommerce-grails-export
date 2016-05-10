@@ -42,6 +42,15 @@ class Variation {
         }
     }
 
+    String getName() {
+        def m = variationDescription
+        def ret = ""
+        if (m.keySet().size() == 1) {
+            ret = m[m.keySet()[0]]
+        }
+        ret
+    }
+
     Map toMap() {
         [
                 id: id,
@@ -50,6 +59,7 @@ class Variation {
                 inStock: inStock,
                 stock: stock,
                 description: variationDescription,
+                name: name
         ]
     }
 
