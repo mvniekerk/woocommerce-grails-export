@@ -17,6 +17,9 @@ class ProductController {
             log.error e.message
         }
         withFormat {
+            excel {
+                [hello: "hi"] as JSON
+            }
             json { render l as JSON}
             xml {render l as XML}
             '*' {render l as JSON}

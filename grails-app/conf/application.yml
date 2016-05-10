@@ -88,6 +88,7 @@ grails:
             atom: application/atom+xml
             css: text/css
             csv: text/csv
+            excel: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
             form: application/x-www-form-urlencoded
             html:
               - text/html

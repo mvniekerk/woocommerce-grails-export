@@ -79,7 +79,6 @@ class Variation {
             sql.close()
         }
 
-        println "\t$ret.attributes"
         ret
     }
 
