@@ -24,7 +24,7 @@ class ProductController {
         }
         withFormat {
             excel {
-                response.setHeader "Content-disposition", "attachment; filename=${new Date().format('yyyy-M-dd.hh.mm.ss')}.xlsx"
+                response.setHeader "Content-disposition", "attachment; filename=${new Date().format('yyyy-M-dd.hh.mm.ss')}.xls"
                 response.contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 def wb = new HSSFWorkbook()
                 def creationHelper = wb.creationHelper
