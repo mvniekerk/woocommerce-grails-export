@@ -57,7 +57,7 @@ class Product {
 
     }
 
-    static def initialParse = { String s ->
+    static String initialParse(String s) {
         def untilBrace = s[0..(s.indexOf(":", 2)+1)]
         s[(untilBrace.size())..-2]
     }
@@ -117,7 +117,7 @@ class Product {
         ret
     }
 
-    static def makeCamelCase = { String key ->
+    static String makeCamelCase(String key) {
         if (key.startsWith("_")) {
             key = key - "_"
         }
