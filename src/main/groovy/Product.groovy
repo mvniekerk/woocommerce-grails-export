@@ -45,6 +45,7 @@ class Product {
 
     Map toMap() {
         [
+                id: id,
                 title: title,
                 price: price,
                 minPrice: minPrice,

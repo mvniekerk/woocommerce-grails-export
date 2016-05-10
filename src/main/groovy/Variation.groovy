@@ -36,7 +36,7 @@ class Variation {
 
     Map<String, String> getVariationDescription() {
         attributes.keySet().findAll {String s -> s.startsWith "attribute"}.collectEntries { String key ->
-            def s = key - 'attributes'
+            def s = key - 'attribute'
             s = s[0].toLowerCase() + (s.size() > 1 ? s[1..-1] : "")
             [(s): attributes[key]]
         }
@@ -56,7 +56,7 @@ class Variation {
     static Variation getVariationForId(def id, DataSource dataSource) {
 
         def ret = new Variation()
-
+        ret.id = id
         def sql = new Sql(dataSource)
         try {
             sql.eachRow "select * from wp_postmeta where post_id=${id}", { meta ->

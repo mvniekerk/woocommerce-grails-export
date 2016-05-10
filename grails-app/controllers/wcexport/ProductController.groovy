@@ -11,10 +11,7 @@ class ProductController {
     def list() {
         def l = []
         try {
-            println ">>>>FSDFSFSDF"
-            log.warn "Before getting list"
             l = productService.productList*.toMap()
-            log.warn l
         } catch (Exception e) {
             e.printStackTrace()
             log.error e.message
