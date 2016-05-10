@@ -1,6 +1,7 @@
 package wcexport
 
 import groovy.sql.Sql
+import groovy.util.logging.Log4j
 
 import javax.sql.DataSource
 
@@ -8,6 +9,7 @@ import javax.sql.DataSource
  * Created by mike on 2016-05-10.
  */
 
+@Log4j
 class Product {
 
     def id
@@ -129,12 +131,14 @@ class Product {
         def sql = new Sql(dataSource)
         def isVariation = false
         try {
+            log.warn "GPFI: $id"
             sql.eachRow "select post_title from wp_posts where ID=$id", { pm ->
                 String postTitle = pm.post_title
 
                 if (!postTitle.startsWith('Variation #')) {
                     ret.title = postTitle
                     ret.id = id
+                    log.warn "GPFI: T: $ret.title"
 
                     sql.eachRow "SELECT wp_term_relationships.*,wp_terms.* FROM wp_term_relationships\n" +
                             "\tLEFT JOIN wp_posts  ON wp_term_relationships.object_id = wp_posts.ID\n" +
@@ -163,7 +167,7 @@ class Product {
                     println "$id: $postTitle $categories $attributes"
                     //Get variation
                     sql.eachRow "select * from wp_posts where post_parent=$id and post_type='product_variation'", { var ->
-                        println "\tVariation : " + var.post_title
+                        log.warn "\tVariation : " + var.post_title
 
                         ret.variations << Variation.getVariationForId(var.ID, dataSource)
 

@@ -1,6 +1,7 @@
 package wcexport
 
 import groovy.sql.Sql
+import groovy.util.logging.Log4j
 
 import javax.sql.DataSource
 
@@ -11,6 +12,7 @@ import static wcexport.Product.parseString
 /**
  * Created by Michael van Niekerk on 2016-05-10.
  */
+@Log4j
 class Variation {
 
     def attributes = [:]
