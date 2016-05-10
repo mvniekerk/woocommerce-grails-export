@@ -11,7 +11,7 @@ class ProductController {
     def list() {
         def l = []
         try {
-            productService.productList
+            l = productService.productList
         } catch (Exception e) {
             e.printStackTrace()
             log.error e.message
